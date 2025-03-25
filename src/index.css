@@ -80,8 +80,7 @@
   }
   
   html {
-    @apply scroll-smooth;
-    font-family: 'Inter', sans-serif;
+    @apply scroll-smooth font-inter;
   }
   
   h1, h2, h3, h4, h5, h6 {
