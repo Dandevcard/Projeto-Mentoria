@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 
@@ -21,14 +20,12 @@ export function Button({
       className={cn(
         "inline-flex items-center justify-center rounded-lg font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none btn-hover",
         {
-          // Variants
           "bg-primary text-primary-foreground hover:bg-primary/90": variant === "primary",
           "bg-secondary text-secondary-foreground hover:bg-secondary/90": variant === "secondary",
           "border border-input bg-background hover:bg-accent hover:text-accent-foreground": variant === "outline",
           "hover:bg-accent hover:text-accent-foreground": variant === "ghost",
           "underline-offset-4 hover:underline text-primary": variant === "link",
           
-          // Sizes
           "text-sm px-3 py-1.5 h-8": size === "sm",
           "text-sm px-4 py-2 h-10": size === "md",
           "text-base px-6 py-2.5 h-12": size === "lg",
@@ -105,9 +102,10 @@ interface BadgeProps {
   children: React.ReactNode;
   variant?: "default" | "primary" | "secondary" | "outline";
   className?: string;
+  onClick?: () => void;
 }
 
-export function Badge({ children, variant = "default", className }: BadgeProps) {
+export function Badge({ children, variant = "default", className, onClick }: BadgeProps) {
   return (
     <span
       className={cn(
@@ -118,8 +116,10 @@ export function Badge({ children, variant = "default", className }: BadgeProps) 
           "bg-accent/10 text-accent-foreground border border-accent/20": variant === "default",
           "border border-border": variant === "outline",
         },
+        onClick ? "cursor-pointer" : "",
         className
       )}
+      onClick={onClick}
     >
       {children}
     </span>
